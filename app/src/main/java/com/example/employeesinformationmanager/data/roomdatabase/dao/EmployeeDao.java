@@ -1,11 +1,11 @@
-package com.example.employeesinformationmanager.data.dao;
+package com.example.employeesinformationmanager.data.roomdatabase.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.employeesinformationmanager.data.Entities.Employee;
+import com.example.employeesinformationmanager.data.roomdatabase.entities.Employee;
 
 import java.util.List;
 

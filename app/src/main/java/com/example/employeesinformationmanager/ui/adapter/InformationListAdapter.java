@@ -11,10 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+import com.example.employeesinformationmanager.data.roomdatabase.entities.Employee;
 import com.example.employeesinformationmanager.R;
 import com.example.employeesinformationmanager.contracts.IHomeContract;
-import com.example.employeesinformationmanager.data.Entities.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,14 +49,14 @@ final Employee employee  =employeesArray.get(position);
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                homeView.showDeleteDialogue(employee);
+                homeView.showDetailsView(employee);
 
             }
         });
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                homeView.showEditPage(employee);
+                homeView.showEditView(employee);
             }
         });
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
