@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.employeesinformationmanager.data.roomdatabase.entities.Employee;
-import com.example.employeesinformationmanager.data.roomdatabase.dao.EmployeeDao;
+import com.example.employeesinformationmanager.data.roomdatabase.dao.*;
 
 @Database(entities = {Employee.class}, version = 1)
 public abstract class AppDatabase  extends RoomDatabase{

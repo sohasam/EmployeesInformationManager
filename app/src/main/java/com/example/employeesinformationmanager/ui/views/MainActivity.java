@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter( informationListAdapter);
-        presenter.getEmployees();
         btnAddEmployee.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -45,6 +44,12 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
 });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.getEmployees();
+
+    }
 
     @Override
     public void showAddNewView() {
