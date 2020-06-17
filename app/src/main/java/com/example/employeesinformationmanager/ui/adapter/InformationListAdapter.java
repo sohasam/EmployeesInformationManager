@@ -1,4 +1,4 @@
-package com.example.employeesinformationmanager.adapter;
+package com.example.employeesinformationmanager.ui.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.employeesinformationmanager.R;
 import com.example.employeesinformationmanager.models.EmployeeModel;

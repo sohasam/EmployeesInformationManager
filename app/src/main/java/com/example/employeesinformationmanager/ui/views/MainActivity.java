@@ -1,14 +1,13 @@
-package com.example.employeesinformationmanager.views;
+package com.example.employeesinformationmanager.ui.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.example.employeesinformationmanager.R;
-import com.example.employeesinformationmanager.adapter.InformationListAdapter;
+import com.example.employeesinformationmanager.ui.adapter.InformationListAdapter;
 import com.example.employeesinformationmanager.models.EmployeeModel;
 
 import java.util.ArrayList;
