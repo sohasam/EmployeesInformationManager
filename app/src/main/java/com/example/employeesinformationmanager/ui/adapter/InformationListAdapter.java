@@ -1,7 +1,6 @@
 package com.example.employeesinformationmanager.ui.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.employeesinformationmanager.R;
-import com.example.employeesinformationmanager.models.EmployeeModel;
+import com.example.employeesinformationmanager.contracts.IHomeContract;
+import com.example.employeesinformationmanager.data.Entities.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InformationListAdapter extends RecyclerView.Adapter<InformationListAdapter.InformationListViewHolder> {
-    private List<EmployeeModel> employeesArray=new ArrayList<>();;
+    private List<Employee> employeesArray=new ArrayList<>();;
     private Context context;
+    private IHomeContract.IHomeView  homeView;
 
-    public InformationListAdapter(List<EmployeeModel> employeesArray, Context context) {
+    public InformationListAdapter(List<Employee> employeesArray, Context context, IHomeContract.IHomeView  homeView ) {
         this.employeesArray = employeesArray;
         this.context = context;
+        this.homeView=homeView;
     }
 
     @NonNull
@@ -40,30 +42,33 @@ public class InformationListAdapter extends RecyclerView.Adapter<InformationList
     @Override
     public void onBindViewHolder(@NonNull InformationListViewHolder holder, int position) {
 
-
-        holder.nameTextView.setText(employeesArray.get(position).getName());
-        holder.emailTextView.setText(employeesArray.get(position).getEmail());
+final Employee employee  =employeesArray.get(position);
+        holder.nameTextView.setText(employee.getName());
+        holder.emailTextView.setText(employee.getEmail());
 
         //img
+        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeView.showDeleteDialogue(employee);
+
+            }
+        });
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("TAG123", "onClick:editButton ");
+                homeView.showEditPage(employee);
             }
         });
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("TAG123", "onClick:deleteButton ");
+                homeView.showDeleteDialogue(employee);
+
             }
         });
 
-        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("TAG123", "onClick: ");
-            }
-        });
+
 
 
     }
