@@ -29,15 +29,16 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
         recyclerView= findViewById(R.id.recycler_View_employees_information);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+
         Employee emp1 = new Employee("soha","soha@gmail.coooooooooooooom");
         Employee emp2 = new Employee("samar","soha@gmail.coooooooooooooom");
-
-//Test Room
+       //Test Room
         AppDatabase appDatabase =AppDatabase.getInstance(this);
-       appDatabase.employeeDao().insertEmployee(emp1);
-     personsArray = appDatabase.employeeDao().getAllEmployees();
-//
-//
+        personsArray = appDatabase.employeeDao().getAllEmployees();
+        appDatabase.employeeDao().deleteEmployee(personsArray.get(0));
+
+
   recyclerView.setAdapter(new InformationListAdapter(personsArray,this,this) );
 Log.i("TAG123", "onClick:  Details...... " +personsArray.get(0).getName());
 

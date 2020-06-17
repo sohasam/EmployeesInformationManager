@@ -15,12 +15,7 @@ public abstract class AppDatabase  extends RoomDatabase{
     public abstract  EmployeeDao employeeDao();
     public   static  AppDatabase  getInstance(Context context) {
         if (INSTANCE == null) {
-            INSTANCE =
-//                    Room.databaseBuilder(context.getApplicationContext(),
-//                    AppDatabase.class, "database-name").build();
-
-                    //Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-name").build();
-                    Room.databaseBuilder(context, AppDatabase.class, "EmployeesInformation")
+            INSTANCE =  Room.databaseBuilder(context, AppDatabase.class, "EmployeesInformation")
                     .allowMainThreadQueries()
                    .fallbackToDestructiveMigration()
                     .build();
