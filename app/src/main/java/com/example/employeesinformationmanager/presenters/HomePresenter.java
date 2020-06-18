@@ -27,4 +27,10 @@ public class HomePresenter implements IHomeContract.IHomePresenter {
         view.rendreEmployees(employees);
 
     }
+
+    @Override
+    public void searchWithName(String name) {
+        List<Employee> employees= model.searchWithName(name);
+        view.rendreEmployees(employees);
+    }
 }

@@ -28,4 +28,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="397dp"
+        android:layout_height="82dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_View_employees_information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

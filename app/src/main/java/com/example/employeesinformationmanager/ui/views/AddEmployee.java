@@ -57,7 +57,7 @@ public class AddEmployee extends AppCompatActivity implements IAddEmployeeContra
         changePicBtn = findViewById(R.id.btn_change_pic);
         imageView = findViewById(R.id.img_view);
         fullNameEditText = findViewById(R.id.edit_text_full_name);
-        emailEditText = findViewById(R.id.edit_text_full_name);
+        emailEditText = findViewById(R.id.edit_text_gmail);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

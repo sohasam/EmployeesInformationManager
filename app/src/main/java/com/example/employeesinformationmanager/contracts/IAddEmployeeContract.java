@@ -5,6 +5,8 @@ import android.net.Uri;
 
 import com.example.employeesinformationmanager.data.roomdatabase.entities.Employee;
 
+import java.util.List;
+
 public interface IAddEmployeeContract {
   public interface IAddEmployeeView{
       void  showErrorToast();
@@ -18,6 +20,7 @@ void setPic(Uri uri);
     public  interface IAddEmployeePresenter{
     void validateData(Employee employee);
     void  AddEmployee(Employee employee);
+
     void  takePhoto();
     void onSuccessToTakePhoto();
 
@@ -29,6 +32,5 @@ void setPic(Uri uri);
 
     public   interface IAddEmployeeModel{
       void  AddEmployee(Employee employee);
-
     }
 }

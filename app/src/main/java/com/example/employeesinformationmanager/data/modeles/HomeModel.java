@@ -20,4 +20,9 @@ public class HomeModel implements IHomeContract.IHomeModel {
     public List<Employee> getEmployees() {
         return appDatabase.employeeDao().getAllEmployees();
     }
+
+    @Override
+    public List<Employee> searchWithName(String name) {
+        return appDatabase.employeeDao().getEmployeesByName(name);
+    }
 }

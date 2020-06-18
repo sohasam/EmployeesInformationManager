@@ -15,9 +15,13 @@ public interface IHomeContract {
       }
     interface IHomePresenter{
         void getEmployees();
+        void  searchWithName(String name);
+
     }
     interface IHomeModel{
         List<Employee> getEmployees();
+        List<Employee> searchWithName(String name);
+
     }
 
 }
