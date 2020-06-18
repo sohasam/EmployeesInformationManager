@@ -5,10 +5,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.employeesinformationmanager.R;
 import com.example.employeesinformationmanager.contracts.IHomeContract;
@@ -16,8 +22,11 @@ import com.example.employeesinformationmanager.data.roomdatabase.entities.Employ
 import com.example.employeesinformationmanager.presenters.HomePresenter;
 import com.example.employeesinformationmanager.ui.adapter.InformationListAdapter;
 
+import java.io.FileDescriptor;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity implements IHomeContract.IHomeView {
     private RecyclerView recyclerView;
@@ -85,4 +94,7 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
         employeesArray .addAll(employees);
         informationListAdapter.notifyDataSetChanged();
     }
+    ///////////////////////////////
+
+
 }

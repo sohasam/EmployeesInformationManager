@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -36,17 +37,13 @@ import static android.os.Environment.getExternalStoragePublicDirectory;
 public class AddEmployee extends AppCompatActivity implements IAddEmployeeContract.IAddEmployeeView {
     IAddEmployeeContract.IAddEmployeePresenter presenter;
     Button btnAdd;
+    Button btnGallery;
     EditText fullNameEditText;
     EditText emailEditText;
     Button changePicBtn;
     ImageView imageView;
-    //static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_TAKE_PHOTO = 1;
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
+    static final int REQUEST_PICK_IMAGE =2;
 
     Employee employee = new Employee("", "");
 
@@ -56,6 +53,7 @@ public class AddEmployee extends AppCompatActivity implements IAddEmployeeContra
         setContentView(R.layout.activity_add_employee);
         presenter = new AddEmployeePresenter(this, this);
         btnAdd = findViewById(R.id.btn_Add);
+        btnGallery=findViewById(R.id.btn_gallery);
         changePicBtn = findViewById(R.id.btn_change_pic);
         imageView = findViewById(R.id.img_view);
         fullNameEditText = findViewById(R.id.edit_text_full_name);
@@ -71,14 +69,15 @@ public class AddEmployee extends AppCompatActivity implements IAddEmployeeContra
         changePicBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // takePicture();
                 presenter.takePhoto();
             }
-//                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//                }
-//            }
+        });
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               presenter.picImgFomGallery();
+
+            }
         });
     }
 
@@ -102,30 +101,40 @@ public class AddEmployee extends AppCompatActivity implements IAddEmployeeContra
         startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
     }
 
+    @Override
+    public void showGalleryActivity(Intent galleryIntent) {
+        startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), REQUEST_PICK_IMAGE);
+
+
+    }
+
+    @Override
+    public void setPic(Uri uri) {
+        try {
+            employee.setImgUri(uri.toString());
+           Bitmap    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+
+            imageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+      imageView.setImageURI(uri);
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            presenter.onSuccessToTakePic();
+            presenter.onSuccessToTakePhoto();
+        }
+      else   if (requestCode == REQUEST_PICK_IMAGE && resultCode == RESULT_OK&& null != data) {
+            presenter.onSuccessToPicImgFomGallery(data);
         }
     }
-    /// save photo
 
-
-    @Override
-    public void setPic(String currentPhotoPath) {
-
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-        int scaleFactor = 12;
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
-        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
-        imageView.setImageBitmap(bitmap);
-    }
 
 
 }

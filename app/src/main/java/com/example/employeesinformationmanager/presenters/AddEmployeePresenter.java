@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
@@ -52,11 +53,39 @@ public class AddEmployeePresenter implements IAddEmployeeContract.IAddEmployeePr
     }
 
     @Override
-    public void onSuccessToTakePic() {
-        view.setPic(currentPhotoPath);
+    public void onSuccessToTakePhoto() {
+        view.setPic(uri);
+    }
+
+    @Override
+    public void picImgFomGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT).
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        ;
+
+        view.showGalleryActivity(intent);
+
+    }
+
+    @Override
+    public void onSuccessToPicImgFomGallery(Intent data) {
+
+        Uri uri = data.getData();
+
+        File file = new File(uri.getPath());//create path from uri
+        final String[] split = file.getPath().split(":");//split the path.
+        Log.i("file.getPath()",file.getPath());
+      String  filePath = split[0];//assign it to a string(your choice).
+
+
+        view.setPic(uri);
+
     }
 
     String currentPhotoPath;
+    Uri uri;
 
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -93,6 +122,8 @@ public class AddEmployeePresenter implements IAddEmployeeContract.IAddEmployeePr
                 Uri photoURI = FileProvider.getUriForFile(context,
                         "com.example.android.fileprovider",
                         photoFile);
+                uri = photoURI;
+
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 view.showPictureTakingActivity(takePictureIntent);
 

@@ -1,5 +1,7 @@
 package com.example.employeesinformationmanager.data.roomdatabase.entities;
 
+import android.net.Uri;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -19,6 +21,26 @@ public class Employee {
     private String name;
     @ColumnInfo(name = "employee_email")
     private String email;
+    @ColumnInfo(name = "Img_Uri")
+    private String  imgUri;
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getImgUri() {
+        return imgUri;
+    }
+
+    public void setImgUri(String imgUri) {
+        this.imgUri = imgUri;
+    }
+
+
 
     public String getName() {
         return name;
