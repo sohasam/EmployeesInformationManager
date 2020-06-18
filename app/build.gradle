@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.employeesinformationmanager"
-        minSdkVersion 19
+        minSdkVersion 28
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -40,7 +40,14 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
     // For Kotlin use kapt instead of annotationProcessor
+
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
+
+
+    //
 
 
 }

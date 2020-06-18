@@ -28,6 +28,7 @@ import com.example.employeesinformationmanager.ui.adapter.InformationListAdapter
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
         presenter = new HomePresenter(this, this);
         recyclerView = findViewById(R.id.recycler_View_employees_information);
         searchView = findViewById(R.id.search_view);
+
+
+
         btnAddEmployee = findViewById(R.id.btn_add_employee);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
                 showAddNewView();
             }
         });
-        searchView.setQueryHint("Search by Full Name");
+        searchView.setQueryHint("Search here for employees");
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -80,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
 
 
         });
+
+        /////
 
     }
 

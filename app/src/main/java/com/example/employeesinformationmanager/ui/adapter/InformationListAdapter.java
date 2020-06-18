@@ -87,22 +87,18 @@ final Employee employee  =employeesArray.get(position);
         });
 
         if(employee.getImgUri()!=null) {
-         //   if (checkPermissionREAD_EXTERNAL_STORAGE(context)) {
+       try {
+                Bitmap    bitmap = getBitmapFromUri(Uri.parse((employee.getImgUri())));
+                holder.img.setImageBitmap(bitmap);
 
-            Bitmap bitmap = null;
-            try {
-              //  bitmap = getBitmapFromUri(Uri.parse(new File(employee.getImgUri()).toString()));
-                 bitmap = getBitmapFromUri(Uri.parse((employee.getImgUri())));
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
 
-            holder.img.setImageBitmap(bitmap);
-
         }
-        //img
+
 
 
 
@@ -147,13 +143,6 @@ final Employee employee  =employeesArray.get(position);
         parcelFileDescriptor.close();
         return image;
     }
-///
-public static final Bitmap getBitmap(ContentResolver cr, Uri url)
-        throws FileNotFoundException, IOException {
-    InputStream input = cr.openInputStream(url);
-    Bitmap bitmap = BitmapFactory.decodeStream(input);
-    input.close();
-    return bitmap;
-}
+
 }
 /////////////////////////////////////////////////////////////////////////////////////

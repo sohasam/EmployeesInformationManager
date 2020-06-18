@@ -8,15 +8,31 @@
 
     <Button
         android:id="@+id/btn_add_employee"
-        android:layout_width="wrap_content"
+
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="AddEmployee"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
+
+        android:background="@color/primaryColor"
+        android:text=" Add employee"
+        android:textColor="#ffff"
+        android:textSize="21dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler_View_employees_information" />
+
+
+
+
+
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_View_employees_information"
@@ -30,8 +46,8 @@
 
     <SearchView
         android:id="@+id/search_view"
-        android:layout_width="397dp"
-        android:layout_height="82dp"
+        android:layout_width="353dp"
+        android:layout_height="54dp"
         app:layout_constraintBottom_toTopOf="@+id/recycler_View_employees_information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

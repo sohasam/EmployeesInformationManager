@@ -65,10 +65,11 @@
         android:id="@+id/btn_Add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="84dp"
+        android:background="@color/primaryColor"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_gmail" />
 
@@ -102,5 +103,35 @@
             android:isScrollContainer="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_launcher_background" />
+
+
     </LinearLayout>
+
+<!--    <com.google.android.material.chip.ChipGroup-->
+<!--        android:id="@+id/chipGroup"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="44dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.329"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/edit_text_gmail"-->
+<!--        app:singleSelection="true">-->
+
+<!--    </com.google.android.material.chip.ChipGroup>-->
+
+<!--    <com.google.android.material.chip.Chip-->
+<!--        android:id="@+id/chip"-->
+<!--        style="@style/Widget.MaterialComponents.Chip.Entry"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="68dp"-->
+<!--        app:chipText="s1"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.115"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/chipGroup" />-->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

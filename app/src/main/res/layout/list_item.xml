@@ -7,10 +7,10 @@
     android:layout_height="wrap_content">
 
     <Button
-    android:id="@+id/btn_delete"
+        android:id="@+id/btn_delete"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="44dp"
-        android:layout_height="29dp"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="16dp"
         android:background="@color/primaryColor"
         android:text="Delete"
@@ -22,7 +22,7 @@
     <Button
         android:id="@+id/btn_edit"
         android:layout_width="50dp"
-        android:layout_height="29dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="4dp"
         android:background="@color/primaryColor"
         android:text="@string/Edite"
@@ -54,8 +54,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="67dp"
-        android:layout_height="74dp"
+        android:layout_width="84dp"
+        android:layout_height="91dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
@@ -64,8 +64,8 @@
 
         <ImageView
             android:id="@+id/item_img_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_launcher_background" />

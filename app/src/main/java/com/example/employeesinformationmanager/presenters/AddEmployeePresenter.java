@@ -85,14 +85,7 @@ public class AddEmployeePresenter implements IAddEmployeeContract.IAddEmployeePr
     public void onSuccessToPicImgFomGallery(Intent data) {
 
         Uri uri = data.getData();
-
-        File file = new File(uri.getPath());//create path from uri
-        final String[] split = file.getPath().split(":");//split the path.
-        Log.i("file.getPath()",file.getPath());
-      String  filePath = split[0];//assign it to a string(your choice).
-
-
-        view.setPic(uri);
+     // view.setPic(uri);
 
     }
 
@@ -144,11 +137,10 @@ public class AddEmployeePresenter implements IAddEmployeeContract.IAddEmployeePr
         }
         galleryAddPic();
     }
-    ///
+    ///add your photo to the Media Provider's database, making it available in the Android Gallery application and to other apps
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(currentPhotoPath);
-        Log.i("currentPhotoPath",currentPhotoPath);
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         context.sendBroadcast(mediaScanIntent);
