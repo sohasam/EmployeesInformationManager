@@ -18,8 +18,9 @@ void setPic(Uri uri);
 
     }
     public  interface IAddEmployeePresenter{
-    void validateData(Employee employee);
+    void validateData(Employee employee,boolean isForEdit);// boolean to know is vaid edite or add
     void  AddEmployee(Employee employee);
+        void  editEmployee(Employee employee);
 
     void  takePhoto();
     void onSuccessToTakePhoto();
@@ -32,5 +33,6 @@ void setPic(Uri uri);
 
     public   interface IAddEmployeeModel{
       void  AddEmployee(Employee employee);
+      void  editEmployee(Employee employee);
     }
 }

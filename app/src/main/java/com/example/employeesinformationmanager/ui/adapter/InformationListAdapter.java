@@ -143,6 +143,7 @@ final Employee employee  =employeesArray.get(position);
 
     /////////////////////////////////////////
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+
         ParcelFileDescriptor parcelFileDescriptor =
                 context.getContentResolver().openFileDescriptor(uri, "r");
         FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();

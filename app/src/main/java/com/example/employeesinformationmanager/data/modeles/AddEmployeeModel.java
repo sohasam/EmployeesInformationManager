@@ -17,4 +17,11 @@ public class AddEmployeeModel implements IAddEmployeeContract.IAddEmployeeModel 
     public void AddEmployee(Employee employee) {
         appDatabase.employeeDao().insertEmployee(employee);
     }
+
+
+
+    @Override
+    public void editEmployee(Employee employee) {
+        appDatabase.employeeDao().updateUsers(employee);
+    }
 }

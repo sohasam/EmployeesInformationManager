@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
     @Override
     public void showAddNewView() {
         Intent intent = new Intent(MainActivity.this, AddEmployee.class);
+        intent.putExtra("isEdit",false);
         startActivity(intent);
 
 
@@ -107,8 +108,10 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.IHo
 
     @Override
     public void showEditView(Employee employee) {
-        Log.i("TAG123", "onClick:  showEditPage...... " + employee.getName());
-
+        Intent intent = new Intent(MainActivity.this, AddEmployee.class);
+        intent.putExtra("isEdit",true);
+        intent.putExtra("Id",employee.getEmployeeId());
+        startActivity(intent);
     }
 
     @Override

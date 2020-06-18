@@ -31,11 +31,17 @@ public class AddEmployeePresenter implements IAddEmployeeContract.IAddEmployeePr
     }
 
     @Override
-    public void validateData(Employee employee) {
+    public void validateData(Employee employee,boolean isForEdit) {
         if (employee.getName().trim().equals("")) {
             view.showErrorToast();
         } else {
-            AddEmployee(employee);
+           if (isForEdit)
+           {
+               editEmployee(employee);
+           }
+           else {
+               AddEmployee(employee);
+           }
         }
 
     }
@@ -43,6 +49,12 @@ public class AddEmployeePresenter implements IAddEmployeeContract.IAddEmployeePr
     @Override
     public void AddEmployee(Employee employee) {
         model.AddEmployee(employee);
+        view.showSuccessToast();
+    }
+
+    @Override
+    public void editEmployee(Employee employee) {
+        model.editEmployee(employee);
         view.showSuccessToast();
     }
 

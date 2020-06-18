@@ -11,6 +11,7 @@ public class Employee {
     public Employee(String name, String email) {
         this.name = name;
         this.email = email;
+
     }
 
         @PrimaryKey(autoGenerate = true)

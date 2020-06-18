@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -24,8 +25,10 @@ import android.widget.Toast;
 
 import com.example.employeesinformationmanager.R;
 import com.example.employeesinformationmanager.contracts.IAddEmployeeContract;
+import com.example.employeesinformationmanager.contracts.IEmployeeDetailsContract;
 import com.example.employeesinformationmanager.data.roomdatabase.entities.Employee;
 import com.example.employeesinformationmanager.presenters.AddEmployeePresenter;
+import com.example.employeesinformationmanager.presenters.EmployeeDetailsPresnter;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,8 +37,10 @@ import java.util.Date;
 
 import static android.os.Environment.getExternalStoragePublicDirectory;
 
-public class AddEmployee extends AppCompatActivity implements IAddEmployeeContract.IAddEmployeeView {
+public class AddEmployee extends AppCompatActivity implements IAddEmployeeContract.IAddEmployeeView , IEmployeeDetailsContract.IDetailsEmployeeView {
+    boolean isEditeView;// is this view for add or for Edit
     IAddEmployeeContract.IAddEmployeePresenter presenter;
+    IEmployeeDetailsContract.IDetailsEmployeePresenter detailsPresenter;// for get Data If View Is Opend for edit
     Button btnAdd;
     Button btnGallery;
     EditText fullNameEditText;
@@ -50,20 +55,35 @@ public class AddEmployee extends AppCompatActivity implements IAddEmployeeContra
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_employee);
-        presenter = new AddEmployeePresenter(this, this);
+       setContentView(R.layout.activity_add_employee);
         btnAdd = findViewById(R.id.btn_Add);
         btnGallery=findViewById(R.id.btn_gallery);
         changePicBtn = findViewById(R.id.btn_change_pic);
         imageView = findViewById(R.id.img_view);
         fullNameEditText = findViewById(R.id.edit_text_full_name);
         emailEditText = findViewById(R.id.edit_text_gmail);
+
+
+
+       Intent intent = getIntent();
+      isEditeView= intent.getBooleanExtra("isEdit",false);
+      if(isEditeView)
+      {
+          detailsPresenter = new EmployeeDetailsPresnter(AddEmployee.this,AddEmployee.this);
+
+          employee.setEmployeeId(intent.getIntExtra("Id",1));
+          detailsPresenter.getEmployeeDetails(employee.getEmployeeId());
+      }
+
+        presenter = new AddEmployeePresenter(this, this);
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 employee.setName(fullNameEditText.getText().toString());
                 employee.setEmail(emailEditText.getText().toString());
-                presenter.validateData(employee);
+                presenter.validateData(employee,isEditeView);
             }
         });
         changePicBtn.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +111,7 @@ public class AddEmployee extends AppCompatActivity implements IAddEmployeeContra
 
     @Override
     public void showSuccessToast() {
-        Toast.makeText(getApplicationContext(), "Employee Added Successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
         AddEmployee.this.finish();
 
     }
@@ -136,5 +156,10 @@ public class AddEmployee extends AppCompatActivity implements IAddEmployeeContra
     }
 
 
+    @Override
+    public void ShowEmployeeDetails(Employee employee) {
+        emailEditText.setText(employee.getName());
+        fullNameEditText.setText(employee.getName());
 
+         }
 }
