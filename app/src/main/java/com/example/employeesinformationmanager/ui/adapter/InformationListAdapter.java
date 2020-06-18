@@ -91,20 +91,16 @@ final Employee employee  =employeesArray.get(position);
 
             Bitmap bitmap = null;
             try {
-                bitmap = getBitmapFromUri(Uri.parse(new File(employee.getImgUri()).toString()));
+              //  bitmap = getBitmapFromUri(Uri.parse(new File(employee.getImgUri()).toString()));
+                 bitmap = getBitmapFromUri(Uri.parse((employee.getImgUri())));
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//                try {
-//                    bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), Uri.parse(employee.getImgUri()));
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+
 
             holder.img.setImageBitmap(bitmap);
-            //   getBitmap(context.getContentResolver(),Uri.parse(employee.getImgUri())));
-            //}
+
         }
         //img
 
