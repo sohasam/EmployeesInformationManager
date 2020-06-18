@@ -32,7 +32,7 @@ public class EmployeeDetailsView extends AppCompatActivity implements IEmployeeD
         setContentView(R.layout.activity_employee_details);
         nameTextView=findViewById(R.id.full_name_text_view);
         emailTextView=findViewById(R.id.email_text_view);
-        imgView=findViewById(R.id.item_img_view);
+        imgView=findViewById(R.id.img_view);
         presenter = new EmployeeDetailsPresnter(this, this);
         Intent intent = getIntent();
         int employeeId = intent.getIntExtra("Id", 1);
