@@ -79,9 +79,9 @@
         android:layout_height="49dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:background="@android:drawable/ic_menu_add"
         android:shadowColor="@color/colorPrimary"
         android:text="+"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/img_view"
         app:layout_constraintTop_toTopOf="@+id/img_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
